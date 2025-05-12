@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-semibold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md transition-all duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-opacity-50 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+  }
+  
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-400;
+  }
+  
+  .btn-outline {
+    @apply btn bg-transparent border border-gray-300 hover:bg-gray-50 focus:ring-gray-300;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-200;
+  }
+
+  .transcript-text {
+    @apply font-serif text-gray-800 leading-relaxed;
+  }
+}
+
+.dropzone {
+  @apply border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all border-gray-300 hover:border-primary-500 focus:outline-none;
+}
+
+.dropzone-active {
+  @apply border-primary-500 bg-primary-50;
+}
+
+.processing-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.processing-wave .dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin: 0 4px;
+  background-color: theme('colors.primary.600');
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+.processing-wave .dot:nth-child(1) { animation-delay: 0s; }
+.processing-wave .dot:nth-child(2) { animation-delay: 0.2s; }
+.processing-wave .dot:nth-child(3) { animation-delay: 0.4s; }
+.processing-wave .dot:nth-child(4) { animation-delay: 0.6s; }
+.processing-wave .dot:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes wave {
+  0%, 40%, 100% { transform: translateY(0); }
+  20% { transform: translateY(-10px); }
+}
+
+.loading-bar {
+  height: 4px;
+  background: linear-gradient(90deg, theme('colors.primary.600'), theme('colors.secondary.500'));
+  background-size: 200% 100%;
+  animation: loading-bar-animation 2s infinite;
+}
+
+@keyframes loading-bar-animation {
+  0% { background-position: 0% 0; }
+  100% { background-position: -200% 0; }
+}
